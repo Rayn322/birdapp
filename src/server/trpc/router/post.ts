@@ -2,10 +2,16 @@ import { z } from 'zod';
 import { protectedProcedure, router } from '../trpc';
 
 export const postRouter = router({
-  getPosts: protectedProcedure.query(({ ctx }) => {
-    return ctx.prisma.post.findMany({
-      where: {
-        id: ctx.session.user.id
+  getPosts: protectedProcedure.query(async ({ ctx }) => {
+    return await ctx.prisma.post.findMany({
+      // where: {
+      //   authorId: ctx.session.user.id
+      // },
+      include: {
+        author: true
+      },
+      orderBy: {
+        createdAt: 'desc'
       }
     });
   }),

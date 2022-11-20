@@ -1,12 +1,12 @@
 import { type FormEvent, useState } from 'react';
 import { trpc } from '../utils/trpc';
 
-const Posts = () => {
+const CreatePost: React.FC<{ refetch: () => void }> = ({ refetch }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const createPost = trpc.post.createPost.useMutation({
-    onSuccess: (post) => {
-      console.log('post', post);
+    onSuccess: () => {
+      refetch();
     }
   });
 
@@ -19,7 +19,7 @@ const Posts = () => {
 
   return (
     <div>
-      <h1 className="text-3xl">Posts</h1>
+      <h1 className="text-3xl">Create Post</h1>
       <form className="flex flex-col" onSubmit={(event) => onSubmit(event)}>
         <input
           className="m-1 rounded border-2 border-gray-700 p-1"
@@ -45,4 +45,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default CreatePost;

@@ -2,9 +2,11 @@ import { type NextPage } from 'next';
 import Head from 'next/head';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { trpc } from '../utils/trpc';
-import Posts from '../components/Posts';
+import CreatePost from '../components/CreatePost';
 
 const Home: NextPage = () => {
+  const { data: posts, refetch } = trpc.post.getPosts.useQuery();
+
   return (
     <>
       <Head>
@@ -13,7 +15,20 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
-        <Posts />
+        <CreatePost refetch={refetch} />
+        {posts?.map((post) => (
+          <div
+            className="m-2 w-96 rounded border-2 border-black p-2"
+            key={post.id}
+          >
+            <h1 className="text-xl">{post.title}</h1>
+            <p>{post.content}</p>
+            <p>
+              {post.author.name} on {post.createdAt.toLocaleDateString()} at{' '}
+              {post.createdAt.toLocaleTimeString()}
+            </p>
+          </div>
+        ))}
         <AuthShowcase />
       </main>
     </>
