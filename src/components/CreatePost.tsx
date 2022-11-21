@@ -18,7 +18,7 @@ const CreatePost: React.FC<{ refetch: () => void }> = ({ refetch }) => {
   };
 
   return (
-    <div>
+    <div className="flex w-80 flex-col">
       <h1 className="text-3xl">Create Post</h1>
       <form className="flex flex-col" onSubmit={(event) => onSubmit(event)}>
         <input
