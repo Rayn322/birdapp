@@ -22,20 +22,20 @@ const CreatePost: React.FC<{ refetch: () => void }> = ({ refetch }) => {
       <h1 className="text-3xl">Create Post</h1>
       <form className="flex flex-col" onSubmit={(event) => onSubmit(event)}>
         <input
-          className="m-1 rounded border-2 border-gray-700 p-1"
+          className="m-1 rounded border-2 border-black p-1"
           type="text"
           placeholder="Title"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
         <textarea
-          className="m-1 rounded border-2 border-gray-700 p-1"
+          className="m-1 rounded border-2 border-black p-1"
           placeholder="Content"
           value={content}
           onChange={(event) => setContent(event.target.value)}
         />
         <button
-          className="m-1 rounded-lg border-2 border-gray-700 p-1"
+          className="m-1 rounded-lg border-2 border-black p-1"
           type="submit"
         >
           Submit
