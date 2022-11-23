@@ -11,7 +11,7 @@ type Posts = {
 
 const PostsList: React.FC<Posts> = ({ posts }) => {
   return (
-    <div>
+    <div className="mt-8">
       {posts?.map((post) => (
         <PostCard post={post} key={post.id} />
       ))}
