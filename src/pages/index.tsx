@@ -21,7 +21,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="m-6 flex justify-center">
+      <main className="m-6 flex flex-col items-center justify-center md:flex-row md:items-start">
         <CreatePost refetch={refetch} />
         <PostsList posts={posts} />
       </main>
