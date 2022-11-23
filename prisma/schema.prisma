@@ -68,4 +68,6 @@ model Post {
   updatedAt DateTime @updatedAt
   author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId  String
+
+  @@unique([id, authorId])
 }
