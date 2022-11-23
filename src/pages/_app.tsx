@@ -6,7 +6,9 @@ import { Inter } from '@next/font/google';
 
 import '../styles/globals.css';
 
-const inter = Inter();
+const inter = Inter({
+  subsets: ['latin']
+});
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,

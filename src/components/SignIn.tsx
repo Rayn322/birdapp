@@ -5,7 +5,7 @@ export const SignIn: React.FC = () => {
 
   return (
     <button
-      className="rounded-full bg-black px-10 py-3 font-semibold text-white transition hover:bg-gray-600"
+      className="rounded-full bg-black px-10 py-3 font-light text-white transition hover:bg-gray-600"
       onClick={sessionData ? () => signOut() : () => signIn()}
     >
       {sessionData ? 'Sign out' : 'Sign in'}

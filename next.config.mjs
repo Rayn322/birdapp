@@ -12,6 +12,15 @@ const config = {
   i18n: {
     locales: ['en'],
     defaultLocale: 'en'
+  },
+  images: {
+    minimumCacheTTL: 60 * 60,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.discordapp.com'
+      }
+    ]
   }
 };
 export default config;
