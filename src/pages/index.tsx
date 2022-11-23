@@ -23,7 +23,7 @@ const Home: NextPage = () => {
       <Navbar />
       <main className="m-6 flex flex-col items-center justify-center md:flex-row md:items-start">
         <CreatePost refetch={refetch} />
-        <PostsList posts={posts} />
+        <PostsList posts={posts} refetch={refetch} />
       </main>
     </>
   );
