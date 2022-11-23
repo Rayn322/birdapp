@@ -7,14 +7,13 @@ type Posts = {
         author: User;
       })[]
     | undefined;
-  refetch: () => void;
 };
 
-const PostsList: React.FC<Posts> = ({ posts, refetch }) => {
+const PostsList: React.FC<Posts> = ({ posts }) => {
   return (
     <div className="mt-8">
       {posts?.map((post) => (
-        <PostCard post={post} key={post.id} refetch={refetch} />
+        <PostCard post={post} key={post.id} />
       ))}
     </div>
   );
