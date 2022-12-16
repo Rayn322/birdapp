@@ -21,6 +21,13 @@ const PostCard: React.FC<PostType> = ({ post }) => {
     });
   }
 
+  function getRelativeTime(date: Date) {
+    const formatter = new Intl.RelativeTimeFormat('en');
+    const now = new Date();
+    const diff = date.valueOf() - now.valueOf();
+    return formatter.format(Math.ceil(diff / (1000 * 60 * 60 * 24)), 'days');
+  }
+
   return (
     <div
       className="w-96 rounded border-2 border-black p-2 dark:border-gray-300"
@@ -50,9 +57,12 @@ const PostCard: React.FC<PostType> = ({ post }) => {
       </div>
       <h1 className="mt-2 text-xl">{post.title}</h1>
       <p className="mt-1 font-light">{post.content}</p>
-      <p className="mt-2 text-gray-600 dark:text-gray-400">
-        {post.createdAt.toLocaleDateString()} at{' '}
-        {post.createdAt.toLocaleTimeString()}
+      <p
+        className="mt-2 text-gray-600 dark:text-gray-400"
+        title={`${post.createdAt.toLocaleDateString()} at ${post.createdAt.toLocaleTimeString()}`}
+      >
+        {/* show time relative to now */}
+        {getRelativeTime(post.createdAt)}
       </p>
     </div>
   );
