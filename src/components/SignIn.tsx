@@ -1,12 +1,12 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
 
-export const SignIn: React.FC = () => {
+export const SignIn: React.FC<{ className: string }> = ({ className }) => {
   const { data: sessionData } = useSession();
 
   return (
     <button
-      className="rounded-full bg-black px-10 py-3 font-light text-white transition hover:bg-gray-600"
       onClick={sessionData ? () => signOut() : () => signIn()}
+      className={className}
     >
       {sessionData ? 'Sign out' : 'Sign in'}
     </button>
