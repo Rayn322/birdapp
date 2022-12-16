@@ -49,8 +49,8 @@ const PostCard: React.FC<PostType> = ({ post }) => {
         )}
       </div>
       <h1 className="mt-2 text-xl">{post.title}</h1>
-      <p className="my-1 font-light">{post.content}</p>
-      <p className="text-gray-600 dark:text-gray-400">
+      <p className="mt-1 font-light">{post.content}</p>
+      <p className="mt-2 text-gray-600 dark:text-gray-400">
         {post.createdAt.toLocaleDateString()} at{' '}
         {post.createdAt.toLocaleTimeString()}
       </p>
