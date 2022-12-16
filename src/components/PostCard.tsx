@@ -1,19 +1,17 @@
 import type { Post, User } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
-import { useContext } from 'react';
-import { RefetchContext } from '../pages';
 import { trpc } from '../utils/trpc';
 
 type PostType = { post: Post & { author: User } };
 
 // consider using context instead of passing refetch
 const PostCard: React.FC<PostType> = ({ post }) => {
-  const refetch = useContext(RefetchContext);
+  const utils = trpc.useContext();
   const session = useSession();
   const deletePost = trpc.post.deletePost.useMutation({
     onSuccess: () => {
-      refetch();
+      utils.post.invalidate();
     }
   });
 

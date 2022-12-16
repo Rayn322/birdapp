@@ -1,14 +1,13 @@
-import { type FormEvent, useState, useContext } from 'react';
-import { RefetchContext } from '../pages';
+import { type FormEvent, useState } from 'react';
 import { trpc } from '../utils/trpc';
 
 const CreatePost = () => {
-  const refetch = useContext(RefetchContext);
+  const utils = trpc.useContext();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const createPost = trpc.post.createPost.useMutation({
     onSuccess: () => {
-      refetch();
+      utils.post.invalidate();
     }
   });
 

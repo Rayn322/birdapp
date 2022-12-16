@@ -5,15 +5,10 @@ import { trpc } from '../utils/trpc';
 import CreatePost from '../components/CreatePost';
 import PostsList from '../components/PostsList';
 import Navbar from '../components/Navbar';
-import { createContext } from 'react';
-
-export const RefetchContext = createContext(() => {
-  console.log('default value');
-});
 
 const Home: NextPage = () => {
   const { data: session } = useSession();
-  const { data: posts, refetch } = trpc.post.getPosts.useQuery(
+  const { data: posts } = trpc.post.getPosts.useQuery(
     undefined, // no input
     { enabled: session?.user !== undefined }
   );
@@ -26,11 +21,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="m-6 flex flex-col items-center justify-center md:flex-row md:items-start">
-        <RefetchContext.Provider value={refetch}>
-          <CreatePost />
-          <PostsList posts={posts} />
-        </RefetchContext.Provider>
+      <main className="m-6 flex flex-col items-center justify-center dark:text-blue-500 md:flex-row md:items-start">
+        <CreatePost />
+        <PostsList posts={posts} />
       </main>
     </>
   );
