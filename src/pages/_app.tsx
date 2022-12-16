@@ -3,7 +3,7 @@ import { type Session } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
 import { trpc } from '../utils/trpc';
 import { Inter } from '@next/font/google';
-
+import Layout from '../components/layout';
 import '../styles/globals.css';
 
 const inter = Inter({
@@ -22,7 +22,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
         }
       `}</style>
       <SessionProvider session={session}>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </SessionProvider>
     </>
   );
