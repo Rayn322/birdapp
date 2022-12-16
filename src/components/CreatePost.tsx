@@ -23,20 +23,20 @@ const CreatePost = () => {
       <h1 className="text-3xl">Create Post</h1>
       <form className="flex flex-col" onSubmit={(event) => onSubmit(event)}>
         <input
-          className="m-1 rounded border-2 border-black p-1"
+          className="m-1 rounded border-2 border-black p-1.5 focus:outline-none dark:border-gray-300 dark:bg-transparent dark:placeholder:text-gray-500"
           type="text"
           placeholder="Title"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
         <textarea
-          className="m-1 rounded border-2 border-black p-1"
+          className="m-1 rounded border-2 border-black p-1.5 focus:outline-none dark:border-gray-300 dark:bg-transparent dark:placeholder:text-gray-500"
           placeholder="Content"
           value={content}
           onChange={(event) => setContent(event.target.value)}
         />
         <button
-          className="m-1 rounded-lg border-2 border-black p-1"
+          className="m-1 rounded-lg border-2 border-black p-1 dark:border-gray-300 "
           type="submit"
         >
           Submit

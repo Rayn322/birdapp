@@ -22,7 +22,10 @@ const PostCard: React.FC<PostType> = ({ post }) => {
   }
 
   return (
-    <div className="m-2 w-96 rounded border-2 border-black p-2" key={post.id}>
+    <div
+      className="w-96 rounded border-2 border-black p-2 dark:border-gray-300"
+      key={post.id}
+    >
       <div className="flex">
         <div className="flex items-center gap-2">
           {post.author.image && (
@@ -38,7 +41,7 @@ const PostCard: React.FC<PostType> = ({ post }) => {
         </div>
         {post.author.id === session.data?.user?.id && (
           <button
-            className="ml-auto rounded border-2 border-black p-1 text-sm"
+            className="ml-auto rounded border-2 border-black p-1 text-sm dark:border-gray-400"
             onClick={deleteButton}
           >
             Delete
@@ -46,8 +49,8 @@ const PostCard: React.FC<PostType> = ({ post }) => {
         )}
       </div>
       <h1 className="mt-2 text-xl">{post.title}</h1>
-      <p className="my-1">{post.content}</p>
-      <p className="text-gray-600">
+      <p className="my-1 font-light">{post.content}</p>
+      <p className="text-gray-600 dark:text-gray-400">
         {post.createdAt.toLocaleDateString()} at{' '}
         {post.createdAt.toLocaleTimeString()}
       </p>

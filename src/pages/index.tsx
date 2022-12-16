@@ -21,7 +21,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="m-6 flex flex-col items-center justify-center dark:text-blue-500 md:flex-row md:items-start">
+      <main className="m-6 flex flex-col items-center justify-center md:flex-row md:items-start">
         <CreatePost />
         <PostsList posts={posts} />
       </main>
