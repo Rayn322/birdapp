@@ -30,7 +30,7 @@ const PostCard: React.FC<PostType> = ({ post }) => {
 
   return (
     <div
-      className="w-96 rounded border-2 border-black p-2 dark:border-gray-300"
+      className="w-96 break-words rounded border-2 border-black p-2 dark:border-gray-300"
       key={post.id}
     >
       <div className="flex">
