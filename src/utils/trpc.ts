@@ -14,7 +14,11 @@ const getBaseUrl = () => {
 export const trpc = createTRPCNext<AppRouter>({
   config() {
     return {
-      transformer: superjson,
+      /**
+       * Links used to determine request flow from client to server.
+       *
+       * @see https://trpc.io/docs/links
+       */
       links: [
         loggerLink({
           enabled: (opts) =>
@@ -22,12 +26,24 @@ export const trpc = createTRPCNext<AppRouter>({
             (opts.direction === 'down' && opts.result instanceof Error)
         }),
         httpBatchLink({
+          /**
+           * Transformer used for data de-serialization from the server.
+           *
+           * @see https://trpc.io/docs/data-transformers
+           */
+          transformer: superjson,
           url: `${getBaseUrl()}/api/trpc`
         })
       ]
     };
   },
-  ssr: false
+  /**
+   * Whether tRPC should await queries when server rendering pages.
+   *
+   * @see https://trpc.io/docs/nextjs#ssr-boolean-default-false
+   */
+  ssr: false,
+  transformer: superjson
 });
 
 /**
